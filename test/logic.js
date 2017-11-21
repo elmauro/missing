@@ -83,7 +83,7 @@ describe('Bussiness Logic', () => {
       logic.scope.LB = '203 204 204000 205 206 207 205 208 203 206 205 206 204';
       setValues();
       logic.search(n, A, m, B);
-      expect(logic.scope.errorMessage).to.equal('204000 is not a valid Number!');
+      expect(logic.scope.errorMessage).to.equal('204000 ... please add valid numbers to the list!');
     });
 
     it('validates max value minus min value is greater or equal to 101', () => {

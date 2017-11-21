@@ -9,13 +9,13 @@ logic.search = (n, A, m, B) => {
     let max = 0;
       
     A = A.reduce((p, c) => {
-      invalid = (c < 1 || c > limit) ? c : invalid;
+      invalid = (c < 1 || c > limit || isNaN(c) ) ? c : invalid;
       (p[c] = p[c] ? p[c] : []).push(c);
       return p
     }, []);
 
     B = B.reduce((p, c) => {
-      invalid = (c < 1 || c > limit) ? c : invalid;
+      invalid = (c < 1 || c > limit || isNaN(c)) ? c : invalid;
       min = c <= min ? c : min;
       max = c >= max ? c : max;
       (p[c] = p[c] ? p[c] : []).push(c);
@@ -73,7 +73,8 @@ logic.validateBefore = (n, A, m, B) => {
 
 logic.validateAfter = (min, max, limit, invalid) => {
   if (invalid !== undefined) {
-    logic.scope.errorMessage = `${invalid} is not a valid Number!`;
+    invalid = isNaN(invalid) ? '' : invalid;
+    logic.scope.errorMessage = `${invalid} ... please add valid numbers to the list!`;
     return false;
   }
 
