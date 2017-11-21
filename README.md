@@ -31,7 +31,7 @@ b. Install with Docker (assuming docker installed on current machine)
   2. npm run coverage
 
 
-## Example
+## Application Working
 
 You can see the application working on http://missingnumbers.us-3.evennode.com
 
