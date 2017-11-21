@@ -6,7 +6,7 @@ angular.module('UIApp')
     function ($scope) {
       logic.scope = $scope;
 
-      $scope.initValues = function(){
+      $scope.initValues = () => {
         $scope.N = 0;
         $scope.M = 0;
         $scope.LA = '';
@@ -14,11 +14,11 @@ angular.module('UIApp')
         $scope.show = false;
       };
 
-      $scope.search = function(){
-        let n = $scope.N;
-        let A = $scope.LA.split(' ').map(i => parseInt(i));
-        let m = $scope.M;
-        let B = $scope.LB.split(' ').map(i => parseInt(i));
+      $scope.search = () => {
+        const n = $scope.N;
+        const A = $scope.LA.split(' ').map(i => parseInt(i, 10));
+        const m = $scope.M;
+        const B = $scope.LB.split(' ').map(i => parseInt(i, 10));
 
         logic.search(n, A, m, B);
       };

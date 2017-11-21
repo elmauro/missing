@@ -19,5 +19,11 @@
     "pug": "2.0.0-beta11",
     "serve-favicon": "~2.4.5",
     "swig": "^1.4.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-chai-friendly": "^0.4.0",
+    "eslint-plugin-import": "^2.7.0"
   }
 }
