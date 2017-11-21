@@ -44,7 +44,7 @@ logic.search = (n, A, m, B) => {
 
 logic.validateBefore = (n, A, m, B) => {
   if (m < 1 || n < 1) {
-    logic.scope.errorMessage = 'M and N should be greater than 1!';
+    logic.scope.errorMessage = 'M and N should be greater than 0!';
     return false;
   }
 

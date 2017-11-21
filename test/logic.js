@@ -32,13 +32,13 @@ describe('Bussiness Logic', () => {
       expect(logic.scope.missings).to.equal('204 205 206');
     });
 
-    it('validates n and m greater than 1', () => {
+    it('validates n and m greater than 0', () => {
       logic.scope.N = 0;
       logic.scope.M = 0;
       setValues();
       const valid = logic.validateBefore(n, A, m, B);
       expect(valid).to.equal(false);
-      expect(logic.scope.errorMessage).to.equal('M and N should be greater than 1!');
+      expect(logic.scope.errorMessage).to.equal('M and N should be greater than 0!');
     });
 
     it('validates M is greater than 2 X 10⁵', () => {
