@@ -15,9 +15,11 @@ logic.search = (n, A, m, B) => {
     let invalid;
     let min = limit;
     let max = 0;
+    let notInB;
 
     A = A.reduce((p, c) => {
       invalid = (c < 1 || c > limit || isNaN(c)) ? c : invalid;
+      notInB = (B.indexOf(c) === -1) ? c : notInB;
       (p[c] = p[c] ? p[c] : []).push(c);
       return p;
     }, []);
@@ -30,7 +32,7 @@ logic.search = (n, A, m, B) => {
       return p;
     }, []);
 
-    if (logic.validateAfter(min, max, limit, invalid)) {
+    if (logic.validateAfter(min, max, limit, invalid, notInB)) {
       const missings = B.filter(o =>
         !A[o[0]] || A[o[0]].length < B[o[0]].length
       ).map(e => e[0]);
@@ -91,10 +93,16 @@ logic.validateBefore = (n, A, m, B) => {
  * @param {integer} limit - The maximum value of a number in the B list.
  * @param {integer} invalid - An invalid number < 1 or number > limit.
  */
-logic.validateAfter = (min, max, limit, invalid) => {
+logic.validateAfter = (min, max, limit, invalid, notInB) => {
   if (invalid !== undefined) {
     invalid = isNaN(invalid) ? '' : `invalid number ${invalid}`;
     logic.scope.errorMessage = `${invalid} ... please add valid numbers to the list!`;
+    return false;
+  }
+
+  if (notInB !== undefined) {
+    notInB = isNaN(notInB) ? '' : `the number ${notInB}`;
+    logic.scope.errorMessage = `${notInB} ... does not exists in B list!`;
     return false;
   }
 

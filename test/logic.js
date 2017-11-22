@@ -86,6 +86,16 @@ describe('Bussiness Logic', () => {
       expect(logic.scope.errorMessage).to.equal('invalid number 204000 ... please add valid numbers to the list!');
     });
 
+    it('validates the number does not exists in B list', () => {
+      logic.scope.N = 10;
+      logic.scope.M = 13;
+      logic.scope.LA = '203 204 205 206 207 208 203 204 205 210';
+      logic.scope.LB = '203 204 206 205 206 207 205 208 203 206 205 206 204';
+      setValues();
+      logic.search(n, A, m, B);
+      expect(logic.scope.errorMessage).to.equal('the number 210 ... does not exists in B list!');
+    });
+
     it('validates max value minus min value is greater or equal to 101', () => {
       logic.scope.N = 10;
       logic.scope.M = 13;
