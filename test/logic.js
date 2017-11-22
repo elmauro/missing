@@ -8,11 +8,11 @@ let B;
 let m;
 
 function setValues() {
-  A = logic.scope.LA.split(' ').map(i => parseInt(i));
+  A = logic.scope.LA.split(' ').map(i => parseInt(i, 10));
   n = logic.scope.N;
-  B = logic.scope.LB.split(' ').map(i => parseInt(i));
+  B = logic.scope.LB.split(' ').map(i => parseInt(i, 10));
   m = logic.scope.M;
-};
+}
 
 describe('Bussiness Logic', () => {
   beforeEach((done) => {
@@ -83,7 +83,7 @@ describe('Bussiness Logic', () => {
       logic.scope.LB = '203 204 204000 205 206 207 205 208 203 206 205 206 204';
       setValues();
       logic.search(n, A, m, B);
-      expect(logic.scope.errorMessage).to.equal('204000 ... please add valid numbers to the list!');
+      expect(logic.scope.errorMessage).to.equal('invalid number 204000 ... please add valid numbers to the list!');
     });
 
     it('validates max value minus min value is greater or equal to 101', () => {
